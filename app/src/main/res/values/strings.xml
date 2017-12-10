@@ -1,0 +1,4 @@
+<resources>
+	<string name="app_name">SQL Contact List</string>
+	<string name="action_settings">Settings</string>
+</resources>
