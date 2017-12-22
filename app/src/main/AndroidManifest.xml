@@ -10,7 +10,7 @@
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
 		<activity
-			android:name=".ContactList"
+			android:name=".ContactActivity"
 			android:label="@string/app_name"
 			android:theme="@style/AppTheme.NoActionBar">
 			<intent-filter>
@@ -24,6 +24,8 @@
 			android:name=".data.ContactProvider"
 			android:authorities="com.sundaydevblog.sqlcontactlist"
 			android:exported="false" />
+
+		<activity android:name=".EditorActivity"></activity>
 	</application>
 
 </manifest>

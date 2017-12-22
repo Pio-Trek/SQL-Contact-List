@@ -1,42 +1,36 @@
 package com.sundaydevblog.sqlcontactlist;
 
-import android.content.ContentUris;
-import android.net.Uri;
+import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import com.sundaydevblog.sqlcontactlist.data.DatabaseContract;
+import com.sundaydevblog.sqlcontactlist.data.DatabaseContract.ContactEntry;
+import com.sundaydevblog.sqlcontactlist.data.DatabaseHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ContactList extends AppCompatActivity {
+public class ContactActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    //@BindView(R.id.image_contact)
-    //CircleImageView imageContact;
-    @BindView(R.id.text_name)
-    TextView textName;
-    @BindView(R.id.text_phone)
-    TextView textPhone;
-    @BindView(R.id.text_address)
-    TextView textAddress;
     @BindView(R.id.fab)
     FloatingActionButton fab;
+
     ContactCursorAdapter cursorAdapter;
-    @BindView(R.id.list_contacts)
-    ListView listContacts;
+    @BindView(R.id.text_test)
+    TextView textTest;
+
+
+    private DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +40,12 @@ public class ContactList extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
 
-        cursorAdapter = new ContactCursorAdapter(this, null);
+        dbHelper = new DatabaseHelper(this);
+
+
+/*        cursorAdapter = new ContactCursorAdapter(this, null);
         listContacts.setAdapter(cursorAdapter);
+
 
         listContacts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -57,17 +55,48 @@ public class ContactList extends AppCompatActivity {
 
                 Uri currentPetUri = ContentUris.withAppendedId(DatabaseContract.ContactEntry.CONTENT_URI, id);
             }
-        });
-
+        });*/
 
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        displayDataBaseInfo();
+    }
+
+    private void displayDataBaseInfo() {
+
+        String[] projection = {
+                ContactEntry._ID,
+                ContactEntry.COLUMN_NAME,
+                ContactEntry.COLUMN_ADDRESS,
+                ContactEntry.COLUMN_PHONE};
+
+        Cursor cursor = getContentResolver().query(
+                ContactEntry.CONTENT_URI,
+                projection,
+                null,
+                null,
+                null);
+
+    }
 
     @OnClick(R.id.fab)
     public void setFab(View view) {
-        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
+        Intent intent = new Intent(ContactActivity.this, EditorActivity.class);
+        startActivity(intent);
+
+       /* Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();*/
+
+/*        ContentValues values = new ContentValues();
+        values.put(ContactEntry.COLUMN_NAME, "Test Name");
+        values.put(ContactEntry.COLUMN_ADDRESS, "Some Address 123");
+        values.put(ContactEntry.COLUMN_PHONE, "0123456789");
+
+        Uri newUri = getContentResolver().insert(ContactEntry.CONTENT_URI, values);*/
     }
 
     @Override

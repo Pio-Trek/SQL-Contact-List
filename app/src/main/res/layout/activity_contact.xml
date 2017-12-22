@@ -4,7 +4,18 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context="com.sundaydevblog.sqlcontactlist.ContactList">
+	tools:context="com.sundaydevblog.sqlcontactlist.ContactActivity">
+
+	<!--
+		<ListView
+			android:id="@+id/list_contacts"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent" />
+	-->
+	<TextView
+		android:id="@+id/text_test"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content" />
 
 	<android.support.design.widget.AppBarLayout
 		android:layout_width="match_parent"
@@ -19,8 +30,6 @@
 			app:popupTheme="@style/AppTheme.PopupOverlay" />
 
 	</android.support.design.widget.AppBarLayout>
-
-	<include layout="@layout/list_contact_item" />
 
 	<android.support.design.widget.FloatingActionButton
 		android:id="@+id/fab"

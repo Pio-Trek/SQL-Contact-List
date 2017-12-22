@@ -5,9 +5,7 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	app:layout_behavior="@string/appbar_scrolling_view_behavior"
-	tools:context="com.sundaydevblog.sqlcontactlist.ContactList"
-	tools:layout_editor_absoluteY="81dp"
-	tools:showIn="@layout/activity_contact">
+	tools:layout_editor_absoluteY="81dp">
 
 	<de.hdodenhof.circleimageview.CircleImageView
 		android:id="@+id/image_contact"
