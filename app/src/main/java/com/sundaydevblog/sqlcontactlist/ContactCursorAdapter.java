@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.sundaydevblog.sqlcontactlist.data.DatabaseContract.ContactEntry;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ContactCursorAdapter extends CursorAdapter {
@@ -24,6 +26,8 @@ public class ContactCursorAdapter extends CursorAdapter {
     TextView textPhone;
     @BindView(R.id.text_address)
     TextView textAddress;
+
+    private Unbinder unbinder;
 
     /**
      * Construct a new {@link ContactCursorAdapter}
@@ -46,8 +50,9 @@ public class ContactCursorAdapter extends CursorAdapter {
      */
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
-        return LayoutInflater.from(context).inflate(R.layout.list_contact_item, parent, false);
-
+        View view = LayoutInflater.from(context).inflate(R.layout.list_contact_item, parent, false);
+        unbinder = ButterKnife.bind(this, view);
+        return view;
     }
 
     /**
@@ -60,6 +65,10 @@ public class ContactCursorAdapter extends CursorAdapter {
      */
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
+/*        TextView textName = view.findViewById(R.id.text_name);
+        TextView textAddress = view.findViewById(R.id.text_address);
+        TextView textPhone = view.findViewById(R.id.text_phone);*/
+
         // Extract properties from cursor
         String name = cursor.getString(cursor.getColumnIndex(ContactEntry.COLUMN_NAME));
         String address = cursor.getString(cursor.getColumnIndex(ContactEntry.COLUMN_ADDRESS));

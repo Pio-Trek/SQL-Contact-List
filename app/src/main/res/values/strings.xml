@@ -1,6 +1,5 @@
 <resources>
 	<string name="app_name">SQL Contact List</string>
-	<string name="action_settings">Settings</string>
 	<string name="first_name">First Name</string>
 	<string name="last_name">Last Name</string>
 	<string name="address">Address</string>
@@ -8,4 +7,22 @@
 	<string name="add_photo_button">Add Photo Button</string>
 	<string name="action_delete">Delete</string>
 	<string name="action_save">Save</string>
+	<string name="action_delete_all">Delete All Contacts</string>
+	<string name="editor_insert_contact_successful">New contact saved</string>
+	<string name="editor_insert_contact_error">Error with saving contact</string>
+	<string name="editor_update_contact_successful">Contact updated</string>
+	<string name="editor_update_contact_error">Error with updating contact</string>
+	<string name="editor_delete_contact_successful">Contact deleted</string>
+	<string name="editor_delete_contact_error">Error with deleting contact</string>
+	<string name="editor_title_add_contact">Add a contact</string>
+	<string name="editor_title_edit_contact">Edit contact</string>
+	<string name="editor_unsaved_changes_dialog_msg">Discard your changes and quit editing?</string>
+	<string name="editor_discard">Discard</string>
+	<string name="editor_keep_editing">Keep Editing</string>
+	<string name="empty_title_text">No Contacts</string>
+	<string name="empty_subtitle_text">Create a new contact by clicking the + button below</string>
+
+	<string name="delete_dialog_msg">Delete this pet?</string>
+	<string name="delete">Delete</string>
+	<string name="cancel">Cancel</string>
 </resources>

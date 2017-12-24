@@ -76,7 +76,8 @@ public class ContactProvider extends ContentProvider {
             case TABLE_CODE:
                 cursor = database.query(ContactEntry.TABLE_NAME, projection, selection, selectionArgs, null, null, sortOrder);
                 break;
-            // SELECT 'projection' {id, name, etc} 'FROM table_name' WHERE 'selection' {id} = ? 'selectionArgs' {2, 5, etc}
+            // SELECT 'projection' {id, name, etc} 'FROM table_name'
+            // WHERE 'selection' {id} = ? 'selectionArgs' {2, 5, etc}
             // URI: content://com.sundaydevblog.sqlcontactlist/contacts/2
             case CONTACT_CODE:
                 selection = ContactEntry._ID + " = ?";
@@ -138,6 +139,9 @@ public class ContactProvider extends ContentProvider {
             Toast.makeText(getContext(), "Failed to insert row for " + uri, Toast.LENGTH_SHORT).show();
             return null;
         }
+
+        // Notify all listeners that the data has changed for the pet content URI
+        getContext().getContentResolver().notifyChange(uri, null);
 
         // Return the new URI with the ID (of the newly inserted row) appended at the end
         return ContentUris.withAppendedId(uri, id);
