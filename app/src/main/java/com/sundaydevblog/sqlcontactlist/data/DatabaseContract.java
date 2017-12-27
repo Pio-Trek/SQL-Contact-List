@@ -46,8 +46,14 @@ public final class DatabaseContract {
         public static final String CONTENT_ITEM_TYPE =
                 ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + PROVIDER_NAME + "/" + PATH_CONTACTS;
 
+        /**
+         * Database table name.
+         */
         public final static String TABLE_NAME = "contacts";
 
+        /**
+         * Database columns.
+         */
         public final static String _ID = BaseColumns._ID;
         public final static String COLUMN_NAME = "name";
         public final static String COLUMN_ADDRESS = "address";

@@ -9,25 +9,12 @@ import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.sundaydevblog.sqlcontactlist.data.DatabaseContract.ContactEntry;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ContactCursorAdapter extends CursorAdapter {
-
-    @BindView(R.id.image_contact)
-    CircleImageView imageContact;
-    @BindView(R.id.text_name)
-    TextView textName;
-    @BindView(R.id.text_phone)
-    TextView textPhone;
-    @BindView(R.id.text_address)
-    TextView textAddress;
-
-    private Unbinder unbinder;
 
     /**
      * Construct a new {@link ContactCursorAdapter}
@@ -50,9 +37,7 @@ public class ContactCursorAdapter extends CursorAdapter {
      */
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
-        View view = LayoutInflater.from(context).inflate(R.layout.list_contact_item, parent, false);
-        unbinder = ButterKnife.bind(this, view);
-        return view;
+        return LayoutInflater.from(context).inflate(R.layout.list_contact_item, parent, false);
     }
 
     /**
@@ -65,21 +50,26 @@ public class ContactCursorAdapter extends CursorAdapter {
      */
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-/*        TextView textName = view.findViewById(R.id.text_name);
+        TextView textName = view.findViewById(R.id.text_name);
         TextView textAddress = view.findViewById(R.id.text_address);
-        TextView textPhone = view.findViewById(R.id.text_phone);*/
+        TextView textPhone = view.findViewById(R.id.text_phone);
+        CircleImageView imageContact = view.findViewById(R.id.image_contact);
 
         // Extract properties from cursor
         String name = cursor.getString(cursor.getColumnIndex(ContactEntry.COLUMN_NAME));
         String address = cursor.getString(cursor.getColumnIndex(ContactEntry.COLUMN_ADDRESS));
         String phone = cursor.getString(cursor.getColumnIndex(ContactEntry.COLUMN_PHONE));
-        //byte[] picture = cursor.getBlob(cursor.getColumnIndex(ContactEntry.COLUMN_PICTURE));
+        byte[] picture = cursor.getBlob(cursor.getColumnIndex(ContactEntry.COLUMN_PICTURE));
 
         // Update Views with the attributes for the current contact object
         textName.setText(name);
         textAddress.setText(address);
         textPhone.setText(phone);
-        //TODO update picture {imageContact}
 
+        Glide.with(context)
+                .load(picture)
+                .asBitmap()
+                .placeholder(R.drawable.ic_contact)
+                .into(imageContact);
     }
 }

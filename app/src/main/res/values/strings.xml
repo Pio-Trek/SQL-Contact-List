@@ -4,7 +4,7 @@
 	<string name="last_name">Last Name</string>
 	<string name="address">Address</string>
 	<string name="phone">Phone</string>
-	<string name="add_photo_button">Add Photo Button</string>
+	<string name="add_photo_button">Add Photo</string>
 	<string name="action_delete">Delete</string>
 	<string name="action_save">Save</string>
 	<string name="action_delete_all">Delete All Contacts</string>
@@ -22,7 +22,8 @@
 	<string name="empty_title_text">No Contacts</string>
 	<string name="empty_subtitle_text">Create a new contact by clicking the + button below</string>
 
-	<string name="delete_dialog_msg">Delete this pet?</string>
+	<string name="delete_dialog_msg">Delete this contact?</string>
+	<string name="delete_all_dialog_msg">Delete all contacts?</string>
 	<string name="delete">Delete</string>
 	<string name="cancel">Cancel</string>
 </resources>

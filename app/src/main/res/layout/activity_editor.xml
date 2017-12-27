@@ -5,7 +5,8 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	app:layout_behavior="@string/appbar_scrolling_view_behavior"
-	tools:context="com.sundaydevblog.sqlcontactlist.EditorActivity">
+	tools:context="com.sundaydevblog.sqlcontactlist.EditorActivity"
+	tools:layout_editor_absoluteY="81dp">
 
 	<EditText
 		android:id="@+id/input_first_name"
@@ -15,13 +16,13 @@
 		android:layout_marginStart="8dp"
 		android:layout_marginTop="16dp"
 		android:ems="10"
-		android:hint="@string/first_name"
 		android:inputType="textPersonName"
+		android:labelFor="@id/input_first_name"
+		android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
 		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.0"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/button_add_image"
-		tools:text="First Name" />
+		app:layout_constraintHorizontal_bias="0.529"
+		app:layout_constraintStart_toEndOf="@+id/barrier"
+		app:layout_constraintTop_toBottomOf="@+id/button_add_image" />
 
 	<EditText
 		android:id="@+id/input_last_name"
@@ -29,14 +30,13 @@
 		android:layout_height="wrap_content"
 		android:layout_marginEnd="8dp"
 		android:layout_marginStart="8dp"
-		android:layout_marginTop="8dp"
+		android:layout_marginTop="4dp"
 		android:ems="10"
-		android:hint="@string/last_name"
 		android:inputType="textPersonName"
+		android:labelFor="@id/input_last_name"
 		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/input_first_name"
-		tools:text="Last Name" />
+		app:layout_constraintStart_toEndOf="@+id/barrier"
+		app:layout_constraintTop_toBottomOf="@+id/input_first_name" />
 
 	<EditText
 		android:id="@+id/input_address"
@@ -44,14 +44,13 @@
 		android:layout_height="wrap_content"
 		android:layout_marginEnd="8dp"
 		android:layout_marginStart="8dp"
-		android:layout_marginTop="8dp"
+		android:layout_marginTop="4dp"
 		android:ems="10"
-		android:hint="@string/address"
 		android:inputType="textPersonName"
+		android:labelFor="@id/input_address"
 		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/input_last_name"
-		tools:text="Address" />
+		app:layout_constraintStart_toEndOf="@+id/barrier"
+		app:layout_constraintTop_toBottomOf="@+id/input_last_name" />
 
 	<EditText
 		android:id="@+id/input_phone"
@@ -59,28 +58,88 @@
 		android:layout_height="wrap_content"
 		android:layout_marginEnd="8dp"
 		android:layout_marginStart="8dp"
-		android:layout_marginTop="8dp"
+		android:layout_marginTop="4dp"
 		android:ems="10"
-		android:hint="@string/phone"
 		android:inputType="textPersonName|phone"
+		android:labelFor="@id/input_phone"
 		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/input_address"
-		tools:text="Phone" />
+		app:layout_constraintStart_toEndOf="@+id/barrier"
+		app:layout_constraintTop_toBottomOf="@+id/input_address" />
 
-	<ImageButton
-		android:id="@+id/button_add_image"
-		android:layout_width="100dp"
-		android:layout_height="100dp"
+	<de.hdodenhof.circleimageview.CircleImageView
+		android:id="@+id/image_contact"
+		android:layout_width="90dp"
+		android:layout_height="90dp"
 		android:layout_marginEnd="8dp"
 		android:layout_marginStart="8dp"
 		android:layout_marginTop="16dp"
-		android:background="@android:color/transparent"
-		android:contentDescription="@string/add_photo_button"
-		android:scaleType="fitCenter"
+		app:civ_border_color="@color/colorDivider"
+		app:civ_border_width="1dp"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent"
-		app:srcCompat="@drawable/photo" />
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<ImageButton
+		android:id="@+id/button_add_image"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="8dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="16dp"
+		android:background="?android:attr/selectableItemBackground"
+		android:contentDescription="@string/add_photo_button"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/image_contact" />
+
+	<TextView
+		android:id="@+id/text_first_name"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:text="@string/first_name"
+		android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+		app:layout_constraintBaseline_toBaselineOf="@+id/input_first_name"
+		app:layout_constraintStart_toStartOf="parent" />
+
+	<TextView
+		android:id="@+id/text_last_name"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:text="@string/last_name"
+		android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+		app:layout_constraintBaseline_toBaselineOf="@+id/input_last_name"
+		app:layout_constraintStart_toStartOf="parent" />
+
+	<TextView
+		android:id="@+id/text_address"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:text="@string/address"
+		android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+		app:layout_constraintBaseline_toBaselineOf="@+id/input_address"
+		app:layout_constraintStart_toStartOf="parent" />
+
+	<TextView
+		android:id="@+id/text_phone"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:text="@string/phone"
+		android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+		app:layout_constraintBaseline_toBaselineOf="@+id/input_phone"
+		app:layout_constraintStart_toStartOf="parent" />
+
+	<android.support.constraint.Barrier
+		android:id="@+id/barrier"
+		android:layout_width="wrap_content"
+		android:layout_height="1dp"
+		app:barrierDirection="right"
+		app:constraint_referenced_ids="text_last_name,text_address"
+		tools:ignore="MissingConstraints"
+		tools:layout_editor_absoluteX="8dp" />
+
 
 </android.support.constraint.ConstraintLayout>

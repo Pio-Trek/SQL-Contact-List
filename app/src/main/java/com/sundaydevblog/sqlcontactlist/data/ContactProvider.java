@@ -67,7 +67,6 @@ public class ContactProvider extends ContentProvider {
         // Get readable database
         SQLiteDatabase database = dbHelper.getReadableDatabase();
 
-        // This cursor will hold the result of the query
         Cursor cursor;
 
         // Figure out if the URI matcher can match the URI to a specific code
@@ -93,6 +92,9 @@ public class ContactProvider extends ContentProvider {
         return cursor;
     }
 
+    /**
+     * Returns the MIME type of data for the content URI.
+     */
     @Nullable
     @Override
     public String getType(@NonNull Uri uri) {
@@ -122,17 +124,15 @@ public class ContactProvider extends ContentProvider {
             throw new IllegalArgumentException("Contact requires valid address");
         }
 
-        Integer phone = values.getAsInteger(ContactEntry.COLUMN_PHONE);
+        String phone = values.getAsString(ContactEntry.COLUMN_PHONE);
         if (phone == null) {
             throw new IllegalArgumentException("Contact requires valid phone number");
         }
 
-        //TODO... validation of photo
-
         // Get writable database
         SQLiteDatabase database = dbHelper.getWritableDatabase();
 
-        // Insert the new pet with the given values
+        // Insert the new contact with the given values
         long id = database.insert(ContactEntry.TABLE_NAME, null, values);
         // If the ID is -1, then the insertion failed. Log an error and return null.
         if (id == -1) {
@@ -140,13 +140,17 @@ public class ContactProvider extends ContentProvider {
             return null;
         }
 
-        // Notify all listeners that the data has changed for the pet content URI
+        // Notify all listeners that the data has changed for the contact content URI
         getContext().getContentResolver().notifyChange(uri, null);
 
         // Return the new URI with the ID (of the newly inserted row) appended at the end
         return ContentUris.withAppendedId(uri, id);
     }
 
+
+    /**
+     * Delete the data at the given selection (whole table or single row).
+     */
     @Override
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[]
             selectionArgs) {
@@ -182,6 +186,9 @@ public class ContactProvider extends ContentProvider {
         return rowsDeleted;
     }
 
+    /**
+     * Updates the data at the given selection and selection arguments, with the new ContentValues.
+     */
     @Override
     public int update(@NonNull Uri uri, @Nullable ContentValues contentValues, @Nullable String
             selection, @Nullable String[] selectionArgs) {
@@ -198,9 +205,8 @@ public class ContactProvider extends ContentProvider {
     }
 
     private int updateContact(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
-        //TODO... add validation
 
-        // Otherwise, get writable database to update the data
+        // Get writable database to update the data
         SQLiteDatabase database = dbHelper.getWritableDatabase();
 
         // Perform the update on the database and get the number of rows affected

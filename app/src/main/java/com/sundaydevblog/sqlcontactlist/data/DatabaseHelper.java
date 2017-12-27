@@ -28,7 +28,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + ContactEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + ContactEntry.COLUMN_NAME + " TEXT NOT NULL, "
                 + ContactEntry.COLUMN_ADDRESS + " TEXT, "
-                + ContactEntry.COLUMN_PHONE + " INTEGER NOT NULL, "
+                + ContactEntry.COLUMN_PHONE + " TEXT NOT NULL, "
                 + ContactEntry.COLUMN_PICTURE + " BLOB);";
 
         // Execute the SQL statement
