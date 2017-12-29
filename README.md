@@ -16,9 +16,9 @@ http://sundaydevblog.com/blog/post/sqlite-database-contact-list-with-content-pro
 - Android Build Tools v26.0.1
 - Android Support Repository v26.+
 - ConstraintLayout 1.1.0-beta4+
-- [Butter Knife] (http://jakewharton.github.io/butterknife/) 8.8.1+
+- [Butter Knife](http://jakewharton.github.io/butterknife/) 8.8.1+
 - [CircleImageView](https://github.com/hdodenhof/CircleImageView) 2.2.0+
-- [Glide] (https://github.com/bumptech/glide) 3.8.0+
+- [Glide](https://github.com/bumptech/glide) 3.8.0+
 
 ## Getting Started
 
