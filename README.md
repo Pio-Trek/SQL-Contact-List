@@ -1,12 +1,12 @@
 # SQL Contact List (SQLite with Content Provider and CursorLoader)
 
+![Sample screen](https://github.com/Pio-Trek/SQL-Contact-List/blob/master/art/app01.png)
+
 This is a demo app that presents how to create and use SQLite Database in Android with Content Provider and CursorLoader.
 
 For more information check my blog post:
 
 http://sundaydevblog.com/blog/post/sqlite-database-contact-list-with-content-provider-and-cursorloader
-
-![Sample screen](https://github.com/Pio-Trek/SQL-Contact-List/blob/master/art/app01.png)
 
 ![Add a new contact animation](https://media.giphy.com/media/l49JPt2WuBzWKp3R6/giphy.gif)
 
