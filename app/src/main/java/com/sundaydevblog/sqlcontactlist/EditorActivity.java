@@ -110,7 +110,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
         // Setup OnTouchListeners on all the input fields, so we can determine if the user
         // has touched or modified them. This will let us know if there are unsaved changes
-        // or not, if the user tries to leave the editor without saving.
+        // or not if the user tries to leave the editor without saving.
         inputFirstName.setOnTouchListener(touchListener);
         inputLastName.setOnTouchListener(touchListener);
         inputAddress.setOnTouchListener(touchListener);

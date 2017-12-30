@@ -149,7 +149,7 @@ public class ContactProvider extends ContentProvider {
 
 
     /**
-     * Delete the data at the given selection (whole table or single row).
+     * Delete the data at the given selection (whole table or a single row).
      */
     @Override
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[]
